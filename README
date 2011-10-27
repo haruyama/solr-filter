@@ -1,1 +1,2 @@
-copy lucene-gosen-1.2-dev-ipadic.jar to lib
+mkdir lib
+copy lucene-gosen-*-ipadic.jar to lib
