@@ -19,16 +19,16 @@ class YetAnotherJapanesePartOfSpeachKeepFilter(input : TokenStream,
 
   override def incrementToken : Boolean = {
     while (input.incrementToken) {
-      if (partOfSpeechAtt.getPartOfSpeech().startsWith(prefix)) {
-        if (!keywordAtt.isKeyword()) {
+      if (partOfSpeechAtt.getPartOfSpeech.startsWith(prefix)) {
+        if (!keywordAtt.isKeyword) {
           val basicForm = basicFormAtt.getBasicForm
           if (basicForm != null && basicForm != "*") {
-            termAtt.setEmpty().append(basicForm)
+            termAtt.setEmpty.append(basicForm)
           }
           return true
         }
       }
     }
-    return false
+    false
   }
 }
