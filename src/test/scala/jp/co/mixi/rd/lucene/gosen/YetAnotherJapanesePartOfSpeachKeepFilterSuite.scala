@@ -20,9 +20,15 @@ class YetAnotherJapanesePartOfSpeachKeepFilterSuite extends FunSuite {
     }
   }
 
-  test("動詞") {
+  test("動詞1") {
     val reader = new StringReader("私は走っている")
-      val stream    = new YetAnotherJapanesePartOfSpeachKeepFilter(new JapaneseTokenizer(reader), "動詞")
-      assertTokenStreamContents(stream, Array("走る"))
+    val stream = new YetAnotherJapanesePartOfSpeachKeepFilter(new JapaneseTokenizer(reader), "動詞")
+    assertTokenStreamContents(stream, Array("走る"))
+  }
+
+  test("動詞2 - basicFormが '*' の場合") {
+    val reader = new StringReader("はさみを用いる")
+    val stream = new YetAnotherJapanesePartOfSpeachKeepFilter(new JapaneseTokenizer(reader), "動詞")
+    assertTokenStreamContents(stream, Array("用いる"))
   }
 }
