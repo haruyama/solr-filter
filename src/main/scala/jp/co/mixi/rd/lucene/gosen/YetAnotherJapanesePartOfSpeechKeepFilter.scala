@@ -8,7 +8,7 @@ import org.apache.lucene.analysis.tokenattributes.CharTermAttribute
 import org.apache.lucene.analysis.tokenattributes.KeywordAttribute
 
 
-class YetAnotherJapanesePartOfSpeachKeepFilter(input : TokenStream,
+class YetAnotherJapanesePartOfSpeechKeepFilter(input : TokenStream,
   partOfSpeech : String) extends TokenFilter(input) {
 
   val partOfSpeechAtt = addAttribute(classOf[PartOfSpeechAttribute])

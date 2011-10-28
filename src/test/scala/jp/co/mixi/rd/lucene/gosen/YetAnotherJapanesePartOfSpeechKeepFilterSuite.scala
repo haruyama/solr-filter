@@ -9,7 +9,7 @@ import org.apache.lucene.analysis.tokenattributes.CharTermAttribute
 
 import org.scalatest.FunSuite
 
-class YetAnotherJapanesePartOfSpeachKeepFilterSuite extends FunSuite {
+class YetAnotherJapanesePartOfSpeechKeepFilterSuite extends FunSuite {
 
   def assertTokenStreamContents(ts: TokenStream, expected: Array[String]) {
     val termAtt = ts.getAttribute(classOf[CharTermAttribute])
@@ -22,13 +22,13 @@ class YetAnotherJapanesePartOfSpeachKeepFilterSuite extends FunSuite {
 
   test("動詞1") {
     val reader = new StringReader("私は走っている")
-    val stream = new YetAnotherJapanesePartOfSpeachKeepFilter(new JapaneseTokenizer(reader), "動詞")
+    val stream = new YetAnotherJapanesePartOfSpeechKeepFilter(new JapaneseTokenizer(reader), "動詞")
     assertTokenStreamContents(stream, Array("走る"))
   }
 
   test("動詞2 - basicFormが '*' の場合") {
     val reader = new StringReader("はさみを用いる")
-    val stream = new YetAnotherJapanesePartOfSpeachKeepFilter(new JapaneseTokenizer(reader), "動詞")
+    val stream = new YetAnotherJapanesePartOfSpeechKeepFilter(new JapaneseTokenizer(reader), "動詞")
     assertTokenStreamContents(stream, Array("用いる"))
   }
 }
