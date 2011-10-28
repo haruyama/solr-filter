@@ -1,3 +1,5 @@
+import de.johoop.findbugs4sbt.FindBugs._
+
 name := "gosen filters"
 
 organization := "jp.co.mixi.rd"
@@ -11,6 +13,10 @@ libraryDependencies ++= Seq(
     "org.scalatest" %% "scalatest" % "1.6.1"
    ,"org.apache.lucene" % "lucene-core" % "3.4.0"
    ,"org.apache.solr" % "solr-core" % "3.4.0"
+   ,"org.apache.lucene" % "lucene-gosen" % "1.1.1"
 )
 
 scalacOptions ++= Seq( "-deprecation", "-unchecked" )
+
+
+seq(findbugsSettings : _*)
