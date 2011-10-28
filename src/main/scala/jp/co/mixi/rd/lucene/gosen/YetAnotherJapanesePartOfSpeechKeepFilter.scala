@@ -22,7 +22,7 @@ class YetAnotherJapanesePartOfSpeechKeepFilter(input : TokenStream,
       if (partOfSpeechAtt.getPartOfSpeech.startsWith(prefix)) {
         if (!keywordAtt.isKeyword) {
           val basicForm = basicFormAtt.getBasicForm
-          if (basicForm != null && basicForm != "*") {
+          if (basicForm != "*") {
             termAtt.setEmpty.append(basicForm)
           }
           return true
@@ -30,5 +30,17 @@ class YetAnotherJapanesePartOfSpeechKeepFilter(input : TokenStream,
       }
     }
     false
+  }
+
+  override def equals(that : Any) = {
+    that match {
+      case y : YetAnotherJapanesePartOfSpeechKeepFilter =>
+      super.equals(y) && y.prefix == prefix
+      case _ => false
+    }
+  }
+
+  override def hashCode() = {
+    super.hashCode * 31 + prefix.hashCode
   }
 }
