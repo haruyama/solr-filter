@@ -11,11 +11,11 @@ import org.apache.lucene.analysis.tokenattributes.KeywordAttribute
 class YetAnotherJapanesePartOfSpeechKeepFilter(input : TokenStream,
   partOfSpeech : String) extends TokenFilter(input) {
 
-  val partOfSpeechAtt = addAttribute(classOf[PartOfSpeechAttribute])
-  val basicFormAtt    = addAttribute(classOf[BasicFormAttribute])
-  val termAtt         = addAttribute(classOf[CharTermAttribute])
-  val keywordAtt      = addAttribute(classOf[KeywordAttribute])
-  val prefix          = partOfSpeech + "-"
+  private val partOfSpeechAtt = addAttribute(classOf[PartOfSpeechAttribute])
+  private val basicFormAtt    = addAttribute(classOf[BasicFormAttribute])
+  private val termAtt         = addAttribute(classOf[CharTermAttribute])
+  private val keywordAtt      = addAttribute(classOf[KeywordAttribute])
+  private val prefix          = partOfSpeech + "-"
 
   override def incrementToken : Boolean = {
     while (input.incrementToken) {

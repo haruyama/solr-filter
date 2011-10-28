@@ -11,7 +11,7 @@ import org.scalatest.FunSuite
 
 class YetAnotherJapanesePartOfSpeechKeepFilterSuite extends FunSuite {
 
-  def assertTokenStreamContents(ts: TokenStream, expected: Array[String]) {
+  private def assertTokenStreamContents(ts: TokenStream, expected: Array[String]) {
     val termAtt = ts.getAttribute(classOf[CharTermAttribute])
       expected.foreach {
       term =>
