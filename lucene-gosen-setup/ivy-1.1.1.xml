@@ -1,5 +1,5 @@
 <ivy-module version="1.0">
-  <info organisation="org.apache.lucene" module="lucene-gosen" revision="1.1.1" status="release" publication="20111029001216"/>
+  <info organisation="org.apache.lucene" module="lucene-gosen" revision="1.1.1" status="release" publication="20111031115710"/>
   <publications>
     <artifact name="lucene-gosen"/>
   </publications>
