@@ -9,7 +9,7 @@ import org.apache.lucene.analysis.tokenattributes.CharTermAttribute
 import org.apache.lucene.analysis.tokenattributes.KeywordAttribute
 
 
-class VerbFilter(input : TokenStream) extends TokenFilter(input) {
+class VerbKeepFilter(input : TokenStream) extends TokenFilter(input) {
 
   private val partOfSpeechAtt = addAttribute(classOf[PartOfSpeechAttribute])
   private val basicFormAtt    = addAttribute(classOf[BasicFormAttribute])

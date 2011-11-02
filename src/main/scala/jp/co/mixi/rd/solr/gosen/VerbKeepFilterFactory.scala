@@ -6,17 +6,15 @@ import org.apache.solr.analysis.BaseTokenFilterFactory
 import org.apache.solr.common.ResourceLoader
 import org.apache.solr.util.plugin.ResourceLoaderAware
 
-import jp.co.mixi.rd.lucene.gosen.YetAnotherJapanesePartOfSpeechKeepFilter
+import jp.co.mixi.rd.lucene.gosen.VerbKeepFilter
 
 
-class YetAnotherJapanesePartOfSpeechKeepFilterFactory extends BaseTokenFilterFactory with ResourceLoaderAware {
-  private var partOfSpeech = ""
+class VerbKeepFilterFactory extends BaseTokenFilterFactory with ResourceLoaderAware {
 
   override def inform(loader : ResourceLoader) {
-    partOfSpeech = args.get("partOfSpeech")
   }
 
   override def create(stream: TokenStream) : TokenStream = {
-    new YetAnotherJapanesePartOfSpeechKeepFilter(stream, partOfSpeech)
+    new VerbKeepFilter(stream)
   }
 }
