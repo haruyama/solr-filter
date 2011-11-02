@@ -34,6 +34,12 @@ class VerbKeepFilterSuite extends FilterSuite {
     assertTokenStreamContents(stream, Array("相談する"))
   }
 
+  test("サ変3") {
+    val reader = new StringReader("大きくした")
+    val stream = new VerbKeepFilter(new JapaneseTokenizer(reader))
+    assertTokenStreamContents(stream, Array("大きくする"))
+  }
+
   test("組合せ1") {
     val reader = new StringReader("相談したいことがあるのですが")
     val stream = new VerbKeepFilter(new JapaneseTokenizer(reader))

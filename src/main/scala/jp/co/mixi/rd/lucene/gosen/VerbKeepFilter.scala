@@ -1,5 +1,7 @@
 package jp.co.mixi.rd.lucene.gosen
 
+import scala.collection.mutable.ArrayBuffer
+
 import org.apache.lucene.analysis.TokenFilter
 import org.apache.lucene.analysis.TokenStream
 import org.apache.lucene.analysis.ja.tokenAttributes.PartOfSpeechAttribute
@@ -20,26 +22,45 @@ class VerbKeepFilter(input : TokenStream) extends TokenFilter(input) {
   private val verbPrefix        = "動詞-"
   private val sahenPartOfSearch = "名詞-サ変接続"
   private val sahenType         = "サ変・スル"
-  private val sahenSuffix       = "する"
+  private val sahenSuffix       = "する".toArray
 
   override def incrementToken : Boolean = {
+    val termAttBuffer = new ArrayBuffer[Char]
     while (input.incrementToken) {
       val partOfSpeech = partOfSpeechAtt.getPartOfSpeech
       if (partOfSpeech.startsWith(verbPrefix)) {
-        if (conjugationAtt.getConjugationalType != sahenType) {
-          if (!keywordAtt.isKeyword) {
+        if (!keywordAtt.isKeyword) {
+          if (conjugationAtt.getConjugationalType == sahenType) {
+            termAtt.setEmpty.append(termAttBuffer.toArray)
+            termAtt.append(sahenSuffix)
+          } else {
             val basicForm = basicFormAtt.getBasicForm
             if (basicForm != "*") {
               termAtt.setEmpty.append(basicForm)
             }
-            return true
           }
+          termAttBuffer.clear
+          return true
         }
-      } else if (partOfSpeech == sahenPartOfSearch) {
-        termAtt.append(sahenSuffix)
-        return true
+      } else {
+        termAttBuffer.clear
+        val buffer = new Array[Char](termAtt.length)
+        Array.copy(termAtt.buffer, 0, buffer, 0, termAtt.length)
+        termAttBuffer ++= buffer
       }
     }
     false
+  }
+
+  override def equals(that : Any) = {
+    that match {
+      case v : VerbKeepFilter =>
+      super.equals(v)
+      case _ => false
+    }
+  }
+
+  override def hashCode() = {
+    super.hashCode
   }
 }
