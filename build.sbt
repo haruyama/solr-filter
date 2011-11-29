@@ -1,5 +1,3 @@
-import de.johoop.findbugs4sbt.FindBugs._
-
 name := "gosen filters"
 
 organization := "jp.co.mixi.rd"
@@ -17,6 +15,3 @@ libraryDependencies ++= Seq(
 )
 
 scalacOptions ++= Seq( "-deprecation", "-unchecked" )
-
-
-seq(findbugsSettings : _*)
