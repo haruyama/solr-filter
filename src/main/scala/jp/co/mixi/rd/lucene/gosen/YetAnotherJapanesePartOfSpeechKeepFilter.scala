@@ -2,8 +2,8 @@ package jp.co.mixi.rd.lucene.gosen
 
 import org.apache.lucene.analysis.TokenFilter
 import org.apache.lucene.analysis.TokenStream
-import org.apache.lucene.analysis.ja.tokenAttributes.PartOfSpeechAttribute
-import org.apache.lucene.analysis.ja.tokenAttributes.BasicFormAttribute
+import org.apache.lucene.analysis.gosen.tokenAttributes.PartOfSpeechAttribute
+import org.apache.lucene.analysis.gosen.tokenAttributes.BasicFormAttribute
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute
 import org.apache.lucene.analysis.tokenattributes.KeywordAttribute
 
