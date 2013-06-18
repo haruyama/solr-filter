@@ -8,7 +8,7 @@ import org.apache.lucene.analysis.util.ResourceLoaderAware
 import org.apache.lucene.analysis.util.ResourceLoader
 
 
-class YetAnotherJapanesePartOfSpeechKeepFilterFactory extends TokenFilterFactory {
+class YetAnotherJapanesePartOfSpeechKeepFilterFactory(args: java.util.Map[String,String]) extends TokenFilterFactory(args) {
   private var partOfSpeech = ""
 
   def inform(loader: ResourceLoader) {
