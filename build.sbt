@@ -1,6 +1,6 @@
 import AssemblyKeys._
 
-name := "gosen filters"
+name := "gosen-filters"
 
 organization := "jp.co.mixi.rd"
 
