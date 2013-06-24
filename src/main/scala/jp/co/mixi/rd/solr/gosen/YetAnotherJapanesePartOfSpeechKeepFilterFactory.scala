@@ -9,11 +9,7 @@ import org.apache.lucene.analysis.util.ResourceLoader
 
 
 class YetAnotherJapanesePartOfSpeechKeepFilterFactory(args: java.util.Map[String,String]) extends TokenFilterFactory(args) {
-  private var partOfSpeech = ""
-
-  def inform(loader: ResourceLoader) {
-    partOfSpeech = args.get("partOfSpeech");
-  }
+  private var partOfSpeech = args.get("partOfSpeech")
 
   override def create(stream: TokenStream) : TokenStream = {
     new YetAnotherJapanesePartOfSpeechKeepFilter(stream, partOfSpeech)
