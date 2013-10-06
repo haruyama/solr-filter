@@ -4,16 +4,16 @@ name := "gosen-filters"
 
 organization := "jp.co.mixi.rd"
 
-version := "0.4.1"
+version := "0.4.2"
 
-scalaVersion := "2.10.2"
+scalaVersion := "2.10.3"
 
 
 libraryDependencies ++= Seq(
-    "org.scalatest" %% "scalatest" % "1.9.1" % "test"
-   ,"org.apache.lucene" % "lucene-core" % "4.4.0"
-   ,"org.apache.solr" % "solr-core" % "4.4.0"
-   ,"org.apache.lucene" % "lucene-gosen" % "4.4.0"
+    "org.scalatest" %% "scalatest" % "1.9.2" % "test"
+   ,"org.apache.lucene" % "lucene-core" % "4.5.0"
+   ,"org.apache.solr" % "solr-core" % "4.5.0"
+   ,"org.apache.lucene" % "lucene-gosen" % "4.5.0"
 )
 
 scalacOptions ++= Seq( "-deprecation", "-unchecked" )
