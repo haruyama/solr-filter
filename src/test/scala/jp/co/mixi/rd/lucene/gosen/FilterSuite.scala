@@ -8,6 +8,7 @@ import org.apache.lucene.analysis.tokenattributes.CharTermAttribute
 trait FilterSuite extends FunSuite {
 
   def assertTokenStreamContents(ts: TokenStream, expected: Array[String]) {
+    ts.reset
     val termAtt = ts.getAttribute(classOf[CharTermAttribute])
       expected.foreach {
       term =>
@@ -15,6 +16,7 @@ trait FilterSuite extends FunSuite {
       assert(term === termAtt.toString)
     }
     assert(!ts.incrementToken)
+    ts.end
   }
 
 }
